@@ -33,6 +33,10 @@ fi
 
 arch=$(arch)
 
+if [ $release == archlinux ]; then
+    arch="amd64"
+fi
+
 if [[ $arch == "x86_64" || $arch == "x64" || $arch == "amd64" ]]; then
     arch="amd64"
 elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
@@ -78,6 +82,8 @@ fi
 install_base() {
     if [[ x"${release}" == x"centos" ]]; then
         yum install wget curl tar -y
+    elif [ $release == archlinux ]; then
+        pacman -S --noconfirm curl wget tar -y
     else
         apt install wget curl tar -y
     fi
