@@ -35,6 +35,8 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
     release="ubuntu"
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
+elif cat /etc/issue | grep -Eqi "arch"; then
+    release="archlinux"
 else
     LOGE "未检测到系统版本，请联系脚本作者！\n" && exit 1
 fi
@@ -61,6 +63,8 @@ elif [[ x"${release}" == x"debian" ]]; then
     if [[ ${os_version} -lt 8 ]]; then
         LOGE "请使用 Debian 8 或更高版本的系统！\n" && exit 1
     fi
+elif [ $release == "archlinux" ]; then
+  os_version=""
 fi
 
 confirm() {
