@@ -25,11 +25,21 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
     release="ubuntu"
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
+elif cat /etc/issue | grep -Eqi "arch"; then
+    release="archlinux"
 else
     echo -e "${red}未检测到系统版本，请联系脚本作者！${plain}\n" && exit 1
 fi
 
-arch=$(arch)
+if [[ $release == "archlinux" ]]; then
+  if grep 'PRETTY_NAME=' /etc/os-release | grep -Eqi "arm"; then
+    arch=arm64
+  else
+    arch=amd64
+  fi
+else
+  arch=$(arch)
+fi
 
 if [[ $arch == "x86_64" || $arch == "x64" || $arch == "amd64" ]]; then
     arch="amd64"
@@ -74,6 +84,8 @@ fi
 install_base() {
     if [[ x"${release}" == x"centos" ]]; then
         yum install wget curl tar -y
+    elif [[ ${release} == "archlinux" ]]; then
+        pacman -S wget curl tar --noconfirm
     else
         apt install wget curl tar -y
     fi
