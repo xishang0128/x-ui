@@ -44,6 +44,8 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
     release="ubuntu"
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
+elif cat /etc/issue | grep -Eqi "arch"; then
+    release="archlinux"
 else
     LOGE "未检测到系统版本，请联系脚本作者！\n" && exit 1
 fi
@@ -103,7 +105,7 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/xishang0128/x-ui/master/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start
@@ -122,7 +124,7 @@ update() {
         fi
         return 0
     fi
-    bash <(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/xishang0128/x-ui/master/install.sh)
     if [[ $? == 0 ]]; then
         LOGI "更新完成，已自动重启面板 "
         exit 0
