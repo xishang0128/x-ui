@@ -103,6 +103,21 @@ bash <(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/insta
 
 </details>  
 
+`用户速览`:  
+<details>
+<summary><b>点击查看效果预览</b></summary> 
+  
+![image](https://user-images.githubusercontent.com/38254177/230761101-20431dd7-5bce-489e-9139-0ceb9ab9a2dc.png)
+
+</details>  
+
+`用户查询`:  
+<details>
+<summary><b>点击查看效果预览</b></summary> 
+  
+![image](https://user-images.githubusercontent.com/38254177/230761252-c283c02d-82a4-46ce-a180-dfab4048180d.png)
+
+</details>  
 
 
 
@@ -146,6 +161,8 @@ xray 状态: 运行
 - Debian 8+
 
 # 变更记录  
+- 2023.04.09：支持Relity;支持新的telegram bot控制指令  
+- 2023.03.05：支持用户到期时间限制;随机用户名、密码与端口生成
 - 2023.02.09：支持单端口内用户流量限制与统计；支持VLESS utls配置与分享链接导出  
 - 2022.12.07：添加设备并发限制;细化tls配置,支持minVersion、maxVersion与cipherSuites选择    
 - 2022.11.14：添加xtls-rprx-vision流控选项
